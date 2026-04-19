@@ -1,6 +1,7 @@
 import unittest
 from hello_world import app
 
+
 class TestViews(unittest.TestCase):
     def setUp(self):
         self.app = app.test_client()
