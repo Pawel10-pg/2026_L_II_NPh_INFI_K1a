@@ -7,4 +7,4 @@ class TestViews(unittest.TestCase):
 
     def test_msg_with_name(self):
         rv = self.app.get('/?name=Pawel')
-        self.assertEqual(b'{ "imie":"Pawel", "msg":"Hello World!"}', rv.data)
+        self.assertEqual(b'{"imie":"Pawel", "msg":"Hello World!"}', rv.data)
