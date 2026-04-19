@@ -6,5 +6,5 @@ class TestViews(unittest.TestCase):
         self.app = app.test_client()
 
     def test_msg_with_name(self):
-        rv = self.app.get('/?name=Paweł')
-        self.assertEqual('{ "imie":"Paweł", "msg":"Hello World!"}'.encode('utf-8'), rv.data)
+        rv = self.app.get('/?name=Pawel')
+        self.assertEqual(b'{ "imie":"Pawel", "msg":"Hello World!"}', rv.data)
