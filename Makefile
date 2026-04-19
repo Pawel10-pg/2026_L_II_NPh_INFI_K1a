@@ -8,7 +8,7 @@ lint:
 	flake8 hello_world test
 
 test:
-	python -m pytest
+	PYTHONPATH=. py.test --verbose -s
 
 run:
 	python main.py
