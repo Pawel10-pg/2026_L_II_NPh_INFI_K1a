@@ -11,3 +11,8 @@ jobs:
       - run: make lint
       - run: make test
       - run: make docker_push
+
+workflows:
+  main_workflow:
+    jobs:
+      - build-and-test
