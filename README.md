@@ -84,3 +84,5 @@ o Continuous Integration, Continuous Delivery i Continuous Deployment.
   $ yum install -y docker-ce
   $ systemctl start docker
   ```
+
+Paweł Galik Projekt zaliczeniowy. Zawiera automatyzację w CircleCI oraz wysyłanie obrazu na Docker Hub.
