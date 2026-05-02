@@ -1,3 +1,4 @@
+# Naprawa lintera
 from hello_world import app
 from flask import request
 
