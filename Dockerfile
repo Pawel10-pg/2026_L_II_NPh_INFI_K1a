@@ -1,14 +1,17 @@
-FROM python:3
+# Wybieramy obraz bazowy z Pythonem
+FROM python:3.10-slim
 
-ARG APP_DIR=/usr/src/hello_world_printer
+# Ustawiamy folder, w którym będzie żyła aplikacja w kontenerze
+WORKDIR /app
 
-WORKDIR /tmp
-ADD requirements.txt /tmp/requirements.txt
-RUN pip install -r /tmp/requirements.txt
+# Kopiujemy wszystkie pliki z Twojego komputera do kontenera
+COPY . .
 
-RUN mkdir -p $APP_DIR
-ADD hello_world/ $APP_DIR/hello_world/
-ADD main.py $APP_DIR
+# Instalujemy zależności używając Twojego polecenia z Makefile
+RUN make deps
 
-CMD PYTHONPATH=$PYTHONPATH:/usr/src/hello_world_printer \
-    FLASK_APP=hello_world flask run --host=0.0.0.0
+# Otwieramy port 5000 dla Flask
+EXPOSE 5000
+
+# Uruchamiamy aplikację za pomocą Makefile
+CMD ["make", "run"]
