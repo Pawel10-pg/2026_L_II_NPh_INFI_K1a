@@ -1,17 +1,20 @@
-# Wybieramy obraz bazowy z Pythonem
+# Używamy lekkiej wersji Pythona
 FROM python:3.10-slim
 
-# Ustawiamy folder, w którym będzie żyła aplikacja w kontenerze
+# Instalujemy narzędzie 'make' (konieczne do wykonania RUN make deps)
+RUN apt-get update && apt-get install -y make && rm -rf /var/lib/apt/lists/*
+
+# Ustawiamy katalog roboczy
 WORKDIR /app
 
-# Kopiujemy wszystkie pliki z Twojego komputera do kontenera
+# Kopiujemy pliki
 COPY . .
 
-# Instalujemy zależności używając Twojego polecenia z Makefile
+# Teraz 'make' już zadziała
 RUN make deps
 
-# Otwieramy port 5000 dla Flask
+# Port aplikacji
 EXPOSE 5000
 
-# Uruchamiamy aplikację za pomocą Makefile
+# Start aplikacji
 CMD ["make", "run"]
